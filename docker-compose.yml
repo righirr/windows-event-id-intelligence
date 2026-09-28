@@ -1,0 +1,15 @@
+services:
+  event-id-field-guide:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: event-id-field-guide:latest
+    container_name: event-id-field-guide
+    restart: unless-stopped
+    # HOST_IP / HOST_PORT match the "Interface IP" / "Port" fields in the
+    # app's own Settings panel — set them the same way in both places so the
+    # Access URL the app shows you is the address this actually listens on.
+    # Override via a .env file (see .env.example) or inline, e.g.:
+    #   HOST_IP=192.168.3.100 HOST_PORT=8080 docker compose up -d
+    ports:
+      - "${HOST_IP:-0.0.0.0}:${HOST_PORT:-8080}:80"
