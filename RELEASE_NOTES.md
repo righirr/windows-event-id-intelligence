@@ -1,6 +1,15 @@
 # Release Notes — Event ID Field Guide
 
-## v1.7 — September 28, 2026 (current)
+## v2.0 — September 28, 2026 (current)
+
+A layout and navigation pass — the first release to reorganize how the guide is browsed, not just what it covers.
+
+- **The word cloud now comes before the Event ID collection**, and it's a real filter, not just a search shortcut: click any word and the table right below it updates to show only the Event IDs matching that keyword — same underlying search engine as the search box, just entered from the vocabulary itself.
+- **Trimmed the top bar to three icons** — About, Release Notes and Settings — replacing both the old text-label buttons and the in-page "Explore / Field Notes / Attack Playbook" anchor links, which added clutter without adding navigation most people used. Each is now a small inline-SVG icon button (an info circle, a document, and a gear) with a hover tooltip and an accessible label, instead of a text link.
+- **Added a "Customize your own Windows audit policy" section to About**, linking out to Microsoft's own *Advanced security audit policy settings* reference — a reminder that this guide documents what an Event ID means once logged, not how to turn its logging on, and a pointer to where to actually do that (Group Policy / `auditpol.exe`).
+- Bumped to **2.0** to mark this as a structural/navigation change rather than an additive feature — nothing about the underlying data or its scope changed in this release.
+
+## v1.7 — September 28, 2026
 
 - Added **Docker support**: a `Dockerfile` (nginx:alpine serving the self-contained `index.html`, with gzip, a few standard security headers, and a container healthcheck) and a `docker-compose.yml`, both built and test-run successfully (`docker compose up -d` → healthy container serving the app with gzip active) before being handed off.
 - The compose file's host binding is configurable via `HOST_IP` / `HOST_PORT` environment variables (see `.env.example`) — set to the same values as the **Interface IP** / **Port** fields in the app's own ⚙ Settings panel, so the Access URL Settings shows you is the address Docker actually serves.

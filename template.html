@@ -142,12 +142,13 @@
     font-family:'IBM Plex Mono',monospace; font-weight:500; font-size:10.5px; color:var(--accent-ink);
     background:var(--accent-soft); border-radius:999px; padding:2px 8px; vertical-align:middle; letter-spacing:.02em;
   }
-  .topnav{display:flex; gap:2px; margin-left:8px; flex-wrap:wrap; align-items:center;}
-  .topnav a, .topnav-btn{
-    color:var(--ink-2); text-decoration:none; font-size:13.5px; padding:7px 10px; border-radius:7px;
-    background:none; border:none; cursor:pointer; font-family:inherit;
+  .topnav{display:flex; gap:2px; margin-left:8px; align-items:center;}
+  .topnav-icon{
+    color:var(--ink-2); background:none; border:none; cursor:pointer; border-radius:8px;
+    width:34px; height:34px; display:flex; align-items:center; justify-content:center; flex:none;
   }
-  .topnav a:hover, .topnav-btn:hover{background:var(--card-2); color:var(--ink);}
+  .topnav-icon svg{width:19px; height:19px;}
+  .topnav-icon:hover{background:var(--card-2); color:var(--ink);}
   .theme-toggle{
     margin-left:auto; display:flex; gap:4px; background:var(--card-2); border:1px solid var(--border-soft);
     border-radius:999px; padding:3px;
@@ -429,7 +430,6 @@
     .chart-grid{grid-template-columns:1fr;}
     .stat-row{grid-template-columns:repeat(2,1fr);}
     .hero h1{font-size:32px;}
-    .topnav a{display:none;}
     .version-badge{display:none;}
   }
 </style>
@@ -438,12 +438,15 @@
   <div class="topbar-inner">
     <div class="brand"><span class="owl">🦉</span> Event ID Field Guide <span class="version-badge" id="versionBadge"></span></div>
     <nav class="topnav">
-      <a href="#explore">Explore</a>
-      <a href="#cloud">Field Notes</a>
-      <a href="#usecases">Attack Playbook</a>
-      <button class="topnav-btn" id="btnReleaseNotes" type="button">Release Notes</button>
-      <button class="topnav-btn" id="btnAbout" type="button">About</button>
-      <button class="topnav-btn" id="btnSettings" type="button">⚙ Settings</button>
+      <button class="topnav-icon" id="btnAbout" type="button" title="About" aria-label="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.25"/><line x1="12" y1="11" x2="12" y2="16.5"/><circle cx="12" cy="7.6" r="1.05" fill="currentColor" stroke="none"/></svg>
+      </button>
+      <button class="topnav-icon" id="btnReleaseNotes" type="button" title="Release Notes" aria-label="Release Notes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3.5h8l3.5 3.5V20a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5Z"/><path d="M15 3.5V7h3.5"/><line x1="9" y1="11.5" x2="15" y2="11.5"/><line x1="9" y1="14.5" x2="15" y2="14.5"/><line x1="9" y1="17.5" x2="12.5" y2="17.5"/></svg>
+      </button>
+      <button class="topnav-icon" id="btnSettings" type="button" title="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="2.9"/><path d="M12 3.5v2.1M12 18.4v2.1M20.5 12h-2.1M5.6 12H3.5M17.7 6.3l-1.5 1.5M7.8 16.2l-1.5 1.5M17.7 17.7l-1.5-1.5M7.8 7.8 6.3 6.3"/></svg>
+      </button>
     </nav>
     <div class="theme-toggle" id="themeToggle" role="group" aria-label="Theme">
       <button data-theme="light" title="Light">☀</button>
@@ -460,6 +463,20 @@
   <div class="stat-row" id="statRow"></div>
   <button class="coverage-banner" id="coverageBanner" type="button"></button>
 </div>
+
+<section id="cloud">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Field notes word cloud</h2>
+        <div class="sub">The vocabulary of Windows auditing — sized by how often it shows up. Click a word to filter the collection below to just the matching Event IDs.</div>
+      </div>
+    </div>
+    <div class="card cloud-card">
+      <div class="cloud" id="wordCloud"></div>
+    </div>
+  </div>
+</section>
 
 <section id="explore">
   <div class="wrap">
@@ -524,20 +541,6 @@
           <tbody id="tableBody"></tbody>
         </table>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="cloud">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <h2>Field notes word cloud</h2>
-        <div class="sub">The vocabulary of Windows auditing — sized by how often it shows up. Click a word to search it.</div>
-      </div>
-    </div>
-    <div class="card cloud-card">
-      <div class="cloud" id="wordCloud"></div>
     </div>
   </div>
 </section>

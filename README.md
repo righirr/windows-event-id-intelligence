@@ -3,7 +3,7 @@
 A searchable field guide to Windows Event IDs. **Its core scope is Windows Auditing (Security) Logs and Sysmon Logs** — together the two richest sources of security telemetry Windows produces — with supporting coverage of the System, Application and PowerShell-Operational logs, since real investigations constantly need to cross-reference all of them. The app adds charts, a word cloud, a sortable table, an attack-technique lookup table, and — for a growing subset of events — a genuine real-world log example alongside the synthesized one.
 
 - **Live app (Artifact):** https://claude.ai/artifact/6byjkR49WGEAGu7kQATkDm
-- **Current version:** 1.7 — see [RELEASE_NOTES.md](RELEASE_NOTES.md)
+- **Current version:** 2.0 — see [RELEASE_NOTES.md](RELEASE_NOTES.md)
 
 ## Final number of Event IDs catalogued: 462
 
